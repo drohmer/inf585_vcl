@@ -1,8 +1,7 @@
 /**
 	Objective: Reproduce the scene with the falling and bouncing sphere.
 
-	- Complete the function display_scene to compute the expected trajectory
-
+	- Complete the function "display_scene" to compute the expected trajectory
 */
 
 
@@ -195,6 +194,7 @@ void display_scene(float current_time)
 		// TO DO: Modify this computation to model the bouncing effect
 		// **************************************************************** //
 		vec3 p = 0.5f*g*t*t + v0*t + p0; // currently only models the first parabola
+		// ... to adapt
 		// **************************************************************** //
 
 		// Set the position of the visual sphere representation
