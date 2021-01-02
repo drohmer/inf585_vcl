@@ -262,7 +262,7 @@ template <typename T>
 T const& grid_3D<T>::operator[](size_t3 const& index) const
 {
     check_index_bounds(index.x, index.y, index.z, *this);
-    size_t const idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const idx = offset_grid(index.x, index.y, index.z, dimension.x, dimension.y);
     return data[idx];
 }
 
@@ -270,7 +270,7 @@ template <typename T>
 T & grid_3D<T>::operator[](size_t3 const& index)
 {
     check_index_bounds(index.x, index.y, index.z, *this);
-    size_t const  idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const  idx = offset_grid(index.x, index.y, index.z, dimension.x, dimension.y);
     return data[idx];
 }
 
@@ -280,7 +280,7 @@ template <typename T>
 T const& grid_3D<T>::operator()(size_t3 const& index) const
 {
     check_index_bounds(index.x, index.y, index.z, *this);
-    size_t const  idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const  idx = offset_grid(index.x, index.y, index.z, dimension.x, dimension.y);
     return data[idx];
 }
 
@@ -288,7 +288,7 @@ template <typename T>
 T & grid_3D<T>::operator()(size_t3 const& index)
 {
     check_index_bounds(index.x, index.y, index.z, *this);
-    size_t const  idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const  idx = offset_grid(index.x, index.y, index.z, dimension.x, dimension.y);
     return data[idx];
 }
 
@@ -296,7 +296,7 @@ template <typename T>
 T const& grid_3D<T>::operator()(size_t k1, size_t k2, size_t k3) const
 {
     check_index_bounds(k1, k2, k3, *this);
-    size_t const  idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const  idx = offset_grid(k1, k2, k3, dimension.x, dimension.y);
     return data[idx];
 }
 
@@ -304,7 +304,7 @@ template <typename T>
 T & grid_3D<T>::operator()(size_t k1, size_t k2, size_t k3)
 {
     check_index_bounds(k1, k2, k3, *this);
-    size_t const  idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const  idx = offset_grid(k1, k2, k3, dimension.x, dimension.y);
     return data[idx];
 }
 
@@ -312,37 +312,37 @@ T & grid_3D<T>::operator()(size_t k1, size_t k2, size_t k3)
 template <typename T> T const& grid_3D<T>::operator[](int3 const& index) const
 {
     check_index_bounds(index.x, index.y, index.z, *this);
-    size_t const  idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const  idx = offset_grid(index.x, index.y, index.z, dimension.x, dimension.y);
     return data[idx];
 }
 template <typename T> T& grid_3D<T>::operator[](int3 const& index)
 {
     check_index_bounds(index.x, index.y, index.z, *this);
-    size_t const  idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const  idx = offset_grid(index.x, index.y, index.z, dimension.x, dimension.y);
     return data[idx];
 }
 template <typename T> T const& grid_3D<T>::operator()(int3 const& index) const
 {
     check_index_bounds(index.x, index.y, index.z, *this);
-    size_t const  idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const  idx = offset_grid(index.x, index.y, index.z, dimension.x, dimension.y);
     return data[idx];
 }
 template <typename T> T& grid_3D<T>::operator()(int3 const& index)
 {
     check_index_bounds(index.x, index.y, index.z, *this);
-    size_t const  idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const  idx = offset_grid(index.x, index.y, index.z, dimension.x, dimension.y);
     return data[idx];
 }
 template <typename T> T const& grid_3D<T>::operator()(int k1, int k2, int k3) const
 {
     check_index_bounds(k1, k2, k3, *this);
-    size_t const  idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const  idx = offset_grid(k1, k2, k3, dimension.x, dimension.y);
     return data[idx];
 }
 template <typename T> T& grid_3D<T>::operator()(int k1, int k2, int k3)
 {
     check_index_bounds(k1, k2, k3, *this);
-    size_t const  idx = offset_grid(k1, k2, k3, dimension[0], dimension[1]);
+    size_t const  idx = offset_grid(k1, k2, k3, dimension.x, dimension.y);
     return data[idx];
 }
 

@@ -570,8 +570,8 @@ template <typename T, size_t N1, size_t N2, size_t N3> grid_stack_2D<T, N1, N3> 
         {
             T s{};
             for (size_t k2 = 0; k2 < N2; ++k2) {
-                size_t const ka = offset_grid<N1>(k1, k2);
-                size_t const kb = offset_grid<N2>(k2, k3);
+                size_t const ka = offset_grid_stack<N1>(k1, k2);
+                size_t const kb = offset_grid_stack<N2>(k2, k3);
                 s += va[ka] * vb[kb]; // identical to s += a(k1,k2) * b(k2,k3)
             }
 

@@ -18,6 +18,7 @@ struct user_interaction_parameters {
 	vec2 mouse_prev;
 	bool cursor_on_gui;
 	bool display_frame = true;
+	bool display_trajectory = true;
 };
 user_interaction_parameters user; // Variable used to store user interaction and GUI parameter
 
@@ -35,6 +36,8 @@ struct particle_structure
 	vec3 p0;  // Initial position
 	vec3 v0;  // Initial velocity
 	float t0; // Time of birth
+
+	trajectory_drawable trajectory; // trajectory tracj of the particle for visualization purpose
 };
 
 
@@ -107,6 +110,7 @@ int main(int, char* argv[])
 		ImGui::Begin("GUI",NULL,ImGuiWindowFlags_AlwaysAutoResize);
 		ImGui::Checkbox("Display frame", &user.display_frame);
 		ImGui::SliderFloat("Time Scale", &timer.scale, 0.0f, 2.0f, "%.1f");
+		ImGui::Checkbox("Display trajectory", &user.display_trajectory);
 
 
 		//display_scene();
@@ -156,6 +160,7 @@ void initialize_data()
 
 	mesh_drawable::default_shader = shader_mesh;
 	mesh_drawable::default_texture = texture_white;
+	curve_drawable::default_shader = shader_single_color;
 	global_frame = mesh_drawable(mesh_primitive_frame());
 	scene.camera.look_at({2,3,2}, {0,0,0}, {0,0,1});
 
@@ -174,6 +179,7 @@ void create_new_particle(float current_time)
 	new_particle.p0 = {0,0,0};
 	new_particle.v0 = {0.8f*std::sin(theta),0.8f*std::cos(theta),5};
 	new_particle.t0 = current_time;
+	new_particle.trajectory = trajectory_drawable(20);
 
 	particles.push_back(new_particle);
 }
@@ -202,9 +208,18 @@ void display_scene(float current_time)
 
 		// Display the particle as a sphere
 		draw(sphere, scene);
+
+		// Update and display particles trajectories
+		if(user.display_trajectory){
+			particles[k].trajectory.add(p, current_time);
+			draw(particles[k].trajectory, scene);
+		}
 	}
 
-	// DIsplay the ground
+	
+
+
+	// Display the ground
 	draw(ground, scene);
 }
 
@@ -214,8 +229,10 @@ void remove_old_particles(float current_time)
 	for (auto it = particles.begin(); it != particles.end();)
 	{
 		// if a particle is too old, remove it
-		if (current_time - it->t0 > 3)
+		if (current_time - it->t0 > 3){ 
+			it->trajectory.clear();
 			it = particles.erase(it);
+		}
 
 		// Go to the next particle if we are not already on the last one
 		if(it!=particles.end()) 
@@ -225,7 +242,7 @@ void remove_old_particles(float current_time)
 
 
 // Function called every time the screen is resized
-void window_size_callback(GLFWwindow* window, int width, int height)
+void window_size_callback(GLFWwindow* , int width, int height)
 {
 	glViewport(0, 0, width, height);
 	float const aspect = width / static_cast<float>(height);

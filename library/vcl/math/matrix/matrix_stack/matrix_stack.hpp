@@ -245,7 +245,7 @@ namespace vcl
     {
         for (size_t k1 = 0; k1 < N1; ++k1)
             for (size_t k2 = 0; k2 < N2; ++k2)
-                at_unsafe(k1, k2) = elements[offset_grid<N2>(k1, k2)];
+                at_unsafe(k1, k2) = elements[offset_grid_stack<N2>(k1, k2)];
     }
 
     template <typename T, size_t N1, size_t N2>

@@ -260,9 +260,8 @@ void display_interface()
 }
 
 // Function called every time the screen is resized
-void window_size_callback(GLFWwindow* window, int width, int height)
-{
-	
+void window_size_callback(GLFWwindow* , int width, int height)
+{	
 	glViewport(0, 0, width, height); // The image is displayed on the entire window
 	float const aspect = width / static_cast<float>(height); // Aspect ratio of the window
 

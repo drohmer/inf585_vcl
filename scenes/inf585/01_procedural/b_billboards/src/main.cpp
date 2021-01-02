@@ -14,7 +14,6 @@
 
 */
 
-#define SOLUTION
 
 #include "vcl/vcl.hpp"
 #include <iostream>
@@ -84,9 +83,7 @@ std::vector<particle_bubble> bubbles;
 timer_event_periodic timer_bubble(0.15f);
 	
 std::vector<particle_billboard> billboards;
-timer_event_periodic timer_billboard(0.02f);
-
-
+timer_event_periodic timer_billboard(0.05f);
 
 
 
@@ -234,6 +231,9 @@ void display_scene()
 		// Display the sprites here
 		//  Note : to make the sprite constantly facing the camera set
 		//       quad.transform.rotation = scene.camera.orientation();
+		// ...
+		/* temporary code to remove or adapt */ quad.transform.translate = {0.0, k*0.6, 0.0f};  
+		draw(quad, scene);
 	}
 	glDepthMask(true);
 		

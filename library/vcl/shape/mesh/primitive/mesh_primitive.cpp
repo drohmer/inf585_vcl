@@ -284,6 +284,7 @@ namespace vcl
 		}
 
 		shape.connectivity = connectivity_grid(Nu,Nv);
+		shape.flip_connectivity();
 
 		//Extremity
 		for (size_t ku = 0; ku < size_t(Nu-1); ++ku)
@@ -375,7 +376,7 @@ namespace vcl
 
 	//}
 
-	mesh mesh_primitive_arrow(vec3 const& p0, vec3 const& p1, float cylinder_radius, float cone_length_scale, float cone_radius_scale, int N, bool double_sided)
+	mesh mesh_primitive_arrow(vec3 const& p0, vec3 const& p1, float cylinder_radius, float cone_length_scale, float cone_radius_scale, int N)
 	{
 		assert_vcl(N>2, "Arrow sample must be >2");
 

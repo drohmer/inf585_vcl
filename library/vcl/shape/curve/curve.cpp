@@ -15,7 +15,7 @@ namespace vcl
 		{
 			float const u = k/(N_sample-1.0f);
 			vec3 const p = {std::cos(2*pi*u), std::sin(2*pi*u), 0.0f};
-			curve.push_back(R*p+center);
+			curve.push_back(R*(radius*p)+center);
 		}
 
 		return curve;

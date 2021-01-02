@@ -351,7 +351,7 @@ template <typename T>
 T const& grid_2D<T>::operator()(size_t2 const& index) const
 {
     check_index_bounds(index.x, index.y, *this);
-    size_t idx = offset(index.x, index.y, dimension);
+    size_t idx = offset_grid(index.x, index.y, dimension.x);
 
     return data[idx];
 }
@@ -606,7 +606,8 @@ size_t grid_2D<T>::index_to_offset(int k1, int k2) const
 template <typename T>
 int2 grid_2D<T>::offset_to_index(size_t offset) const
 {
-    return index_grid_from_offset(offset,dimension.x);
+    auto idx = index_grid_from_offset(offset,dimension.x);
+    return {idx.first, idx.second};
 }
 
 

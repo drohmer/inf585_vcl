@@ -57,7 +57,7 @@ namespace vcl
 	* @N: number of samples (cylinder and cone)
 	* @double_sided: create an arrow also at the base point
 	*/
-	mesh mesh_primitive_arrow(vec3 const& p0={0,0,0}, vec3 const& p1={1,0,0}, float cylinder_radius=0.05f, float cone_length_scale=4.0f, float cone_radius_scale=2.5f, int N=18, bool double_sided=false);
+	mesh mesh_primitive_arrow(vec3 const& p0={0,0,0}, vec3 const& p1={1,0,0}, float cylinder_radius=0.05f, float cone_length_scale=4.0f, float cone_radius_scale=2.5f, int N=18);
 
 	mesh mesh_primitive_frame(frame const& f=frame(), float scale=1.0f, vec3 const& color_ux={1,0,0}, vec3 const& color_uy={0,1,0}, vec3 const& color_uz={0,0,1}, vec3 const& color_sphere={1,1,1}, float frame_thickness=0.025f);
 }

@@ -6,3 +6,4 @@
 #include "mesh_normal_drawable/mesh_normal_drawable.hpp"
 #include "curve_drawable/curve_drawable.hpp"
 #include "segments_drawable/segments_drawable.hpp"
+#include "trajectory_drawable/trajectory_drawable.hpp"
