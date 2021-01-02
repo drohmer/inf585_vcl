@@ -18,7 +18,7 @@ include_directories("src")
 #  > The relative path to the VCL library may need to be adapted
 include("../../../library/CMakeLists.txt")
 
-XX
+ 
 
 # Add all files to create executable
 #  @src_files: the local file for this project
