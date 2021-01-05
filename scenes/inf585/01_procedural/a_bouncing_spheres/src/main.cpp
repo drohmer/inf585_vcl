@@ -108,6 +108,7 @@ int main(int, char* argv[])
 		// Create GUI interface for the current frame
 		imgui_create_frame();
 		ImGui::Begin("GUI",NULL,ImGuiWindowFlags_AlwaysAutoResize);
+		user.cursor_on_gui = ImGui::IsAnyWindowFocused();
 		ImGui::Checkbox("Display frame", &user.display_frame);
 		ImGui::SliderFloat("Time Scale", &timer.scale, 0.0f, 2.0f, "%.1f");
 		ImGui::Checkbox("Display trajectory", &user.display_trajectory);
@@ -256,7 +257,6 @@ void mouse_move_callback(GLFWwindow* window, double xpos, double ypos)
 	vec2 const& p0 = user.mouse_prev;
 
 	glfw_state state = glfw_current_state(window);
-	user.cursor_on_gui = ImGui::IsAnyWindowFocused();
 
 	// Handle camera rotation
 	auto& camera = scene.camera;

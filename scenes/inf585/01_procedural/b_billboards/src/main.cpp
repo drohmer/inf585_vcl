@@ -118,6 +118,7 @@ int main(int, char* argv[])
 		glClear(GL_DEPTH_BUFFER_BIT);
 		imgui_create_frame();
 		ImGui::Begin("GUI",NULL,ImGuiWindowFlags_AlwaysAutoResize);
+		user.cursor_on_gui = ImGui::IsAnyWindowFocused();
 		ImGui::Checkbox("Display frame", &user.display_frame);
 		ImGui::Checkbox("Transparent billboard", &user.display_transparent_billboard);
 		ImGui::SliderFloat("Bubble emission rate", &timer_bubble.event_period, 0.01f, 1.0f, "%.2f");
@@ -310,7 +311,6 @@ void mouse_move_callback(GLFWwindow* window, double xpos, double ypos)
 	vec2 const& p0 = user.mouse_prev;
 
 	glfw_state state = glfw_current_state(window);
-	user.cursor_on_gui = ImGui::IsAnyWindowFocused();
 
 	auto& camera = scene.camera;
 	if(!user.cursor_on_gui){
