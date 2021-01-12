@@ -181,7 +181,7 @@ void update_blend_shape()
 
 
 
-void window_size_callback(GLFWwindow* window, int width, int height)
+void window_size_callback(GLFWwindow* , int width, int height)
 {
 	glViewport(0, 0, width, height);
 	float const aspect = width / static_cast<float>(height);

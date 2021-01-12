@@ -210,7 +210,7 @@ void create_new_surface()
 
 
 
-void window_size_callback(GLFWwindow* window, int width, int height)
+void window_size_callback(GLFWwindow* , int width, int height)
 {
 	glViewport(0, 0, width, height);
 	float const aspect = width / static_cast<float>(height);
@@ -222,7 +222,7 @@ void window_size_callback(GLFWwindow* window, int width, int height)
 }
 
 
-void mouse_click_callback(GLFWwindow* window, int button, int action, int mods)
+void mouse_click_callback(GLFWwindow* , int button, int action, int )
 {
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE) {
 		user.picking.active = false;
@@ -235,7 +235,7 @@ void mouse_click_callback(GLFWwindow* window, int button, int action, int mods)
 
 }
 
-void mouse_scroll_callback(GLFWwindow* window, double x_offset, double y_offset)
+void mouse_scroll_callback(GLFWwindow* , double , double y_offset)
 {
     // Increase/decrease falloff distance when scrolling the mouse
     if(user.picking.active)

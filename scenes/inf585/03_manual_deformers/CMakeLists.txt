@@ -34,7 +34,7 @@ endif()
 
 # Set Compiler for Windows/Visual Studio
 if(MSVC)
-    add_definitions(/MP /wd4244)   # Parallel build (/MP)
+    add_definitions(/MP /W4 /wd4244 /wd4127)   # Parallel build (/MP)
     source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${src_files})  #Allow to explore source directories as a tree in Visual Studio
 endif()
 
