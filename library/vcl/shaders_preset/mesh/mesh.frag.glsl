@@ -26,10 +26,11 @@ uniform float specular_exp = 64.0; // Specular exponent
 uniform bool use_texture = true;
 uniform bool texture_inverse_y = false;
 
+
 void main()
 {
 	vec3 N = normalize(fragment.normal);
-	if (!gl_FrontFacing) {
+	if (gl_FrontFacing == false) {
 		N = -N;
 	}
 	vec3 L = normalize(light-fragment.position);

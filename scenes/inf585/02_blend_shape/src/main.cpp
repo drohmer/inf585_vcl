@@ -61,7 +61,6 @@ int main(int, char* argv[])
 	std::cout<<"Initialize data ..."<<std::endl;
 	initialize_data();
 
-
 	std::cout<<"Start animation loop ..."<<std::endl;
 	user.fps_record.start();
 	glEnable(GL_DEPTH_TEST);
