@@ -60,4 +60,20 @@ namespace vcl
         return intersection_closest;
         
     }
+
+    intersection_structure intersection_ray_plane(vec3 const& ray_origin, vec3 const& ray_direction, vec3 const& plane_position, vec3 const& plane_normal)
+    {
+        intersection_structure inter;
+
+        float const t = - dot(ray_origin-plane_position, plane_normal)/dot(ray_direction, plane_normal);
+
+        if (t > 0)
+        {
+            inter.valid = true;
+            inter.position = ray_origin + t*ray_direction;
+            inter.normal = plane_normal;
+        }
+
+        return inter;
+    }
 }
