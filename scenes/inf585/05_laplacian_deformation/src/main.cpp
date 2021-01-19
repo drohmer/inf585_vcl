@@ -107,6 +107,7 @@ int main(int, char* argv[])
 		imgui_create_frame();
 		
 		ImGui::Begin("GUI",NULL,ImGuiWindowFlags_AlwaysAutoResize);
+		user.cursor_on_gui = ImGui::IsAnyWindowFocused();
 
 		if(user.fps_record.event) {
 			std::string const title = "VCL Display - "+str(user.fps_record.fps)+" fps";
@@ -306,7 +307,6 @@ void mouse_click_callback(GLFWwindow* window, int button, int action, int mods)
 
 void mouse_move_callback(GLFWwindow* window, double xpos, double ypos)
 {
-	user.cursor_on_gui = ImGui::IsAnyWindowFocused();
 	vec2 const  p1 = glfw_get_mouse_cursor(window, xpos, ypos);
 	vec2 const& p0 = user.mouse_prev;
 
