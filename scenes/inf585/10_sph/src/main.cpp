@@ -89,6 +89,7 @@ int main(int, char* argv[])
 			std::string const title = "VCL Display - "+str(user.fps_record.fps)+" fps";
 			glfwSetWindowTitle(window, title.c_str());
 		}
+		user.cursor_on_gui = ImGui::IsAnyWindowFocused();
 
 		ImGui::Begin("GUI",NULL,ImGuiWindowFlags_AlwaysAutoResize);
 
@@ -224,7 +225,6 @@ void mouse_move_callback(GLFWwindow* window, double xpos, double ypos)
 	glfw_state state = glfw_current_state(window);
 
 	auto& camera = scene.camera;
-	user.cursor_on_gui = ImGui::IsAnyWindowFocused();
 
 	if(!user.cursor_on_gui){
 		if(state.mouse_click_left && state.key_ctrl)
